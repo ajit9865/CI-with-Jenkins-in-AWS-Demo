@@ -4,7 +4,7 @@ pipeline {
         PROJECT_ID = 'secure-totality-266019'
         CLUSTER_NAME = 'cluster-k8s'
         LOCATION = 'us-central1-c'
-        CREDENTIALS_ID = 'kuberneteslogin'
+        CREDENTIALS_ID = 'DockerLogin'
     }
     stages {
         stage("Checkout code") {
@@ -34,7 +34,7 @@ pipeline {
         stage("Push image") {
             steps {
                 script {
-                    docker.withRegistry('https://gcr.io', 'gcr:kuberneteslogin') {
+                    docker.withRegistry('https://docker.io', 'DockerLogin') {
                             myapp.push("${env.BUILD_ID}")
                     }
                 }
