@@ -34,7 +34,7 @@ pipeline {
         stage("Push image") {
             steps {
                 script {
-                    docker.withRegistry('ajit9865/kubernetesrepos', 'DockerLogin') {
+                    docker.withRegistry('https://docker.io', 'DockerLogin') {
                             myapp.push("${env.BUILD_ID}")
                     }
                 }
