@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        PROJECT_ID = 'secure-totality-266019'
-        CLUSTER_NAME = 'cluster-k8s'
+        PROJECT_ID = 'blissful-glass-271719'
+        CLUSTER_NAME = 'kube-basic'
         LOCATION = 'us-central1-c'
         CREDENTIALS_ID = 'DockerLogin'
     }
