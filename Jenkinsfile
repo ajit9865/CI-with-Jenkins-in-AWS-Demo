@@ -4,7 +4,7 @@ pipeline {
         PROJECT_ID = 'blissful-glass-271719'
         CLUSTER_NAME = 'kube-basic'
         LOCATION = 'us-central1-c'
-        CREDENTIALS_ID = 'DockerLogin'
+        CREDENTIALS_ID = 'kuberneteslogin'
     }
     stages {
         stage("Checkout code") {
