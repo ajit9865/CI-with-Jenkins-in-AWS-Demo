@@ -30,6 +30,5 @@ pipeline {
 			   sh 'mvn tomcat7:deploy'
             }
         }
-        }        
-    }    
+        }           
 }
