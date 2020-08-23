@@ -61,7 +61,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <url>http://18.196.237.36:8080/manager/</url>
+                    <url>http://18.196.237.36:8080/manager</url>
                    <server>TomcatServer</server>
                   <path>/Project-1.0-RAMA</path>
                 </configuration>
