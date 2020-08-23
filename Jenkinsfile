@@ -24,31 +24,12 @@ pipeline {
 			   sh 'mvn test'
             }
         }
-        stage("Build image") {
+	     stage("Deploy") {
             steps {
-                script {
-                    myapp = docker.build("gcr.io/blissful-glass-271719/kubernetesrepos:${env.BUILD_ID}")
-                }
+                echo "Deploying to Tomcat8"
+			   sh 'mvn tomcat7:deploy'
             }
         }
-        stage("Push image") {
-            steps {
-                script {
-                    docker.withRegistry('https://gcr.io','gcr:kuberneteslogin') {
-                            myapp.push("${env.BUILD_ID}")
-                    }
-                }
-            }
         }        
-        stage('Deploy to Google Kubernetes') {
-            steps{
-			    echo "Deployment started"
-				sh 'ls -ltr'
-				sh 'pwd'
-                sh "sed -i 's/tagversion/${env.BUILD_ID}/g' deployment.yaml"
-                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
-				echo "Deployment Finished"
-            }
-        }
     }    
 }
